@@ -85,7 +85,7 @@ export const buildURI = ((data, uFEFF, headers, separator, enclosingCharacter) =
   const type = isSafari() ? 'application/csv' : 'text/csv';
   const blob = new Blob([uFEFF ? '\uFEFF' : '', csv], {type});
   const dataURI = `data:${type};charset=utf-8,${uFEFF ? '\uFEFF' : ''}${csv}`;
-
+  blob.name = 'export.csv';
   const URL = window.URL || window.webkitURL;
 
   return (typeof URL.createObjectURL === 'undefined')
